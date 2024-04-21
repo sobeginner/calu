@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공학용 계산기</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .calculator {
+            width: 300px;
+            margin: auto;
+            margin-top: 50px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container calculator">
+    <h2 class="text-center">공학용 계산기</h2>
+    <form name="calculator">
+        <div class="form-group">
+            <input type="text" class="form-control" name="display" id="display" readonly>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-secondary btn-block" onclick="clearDisplay()">C</button>
+        </div>
+        <div class="row">
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('7')">7</button></div>
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('8')">8</button></div>
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('9')">9</button></div>
+            <div class="col"><button type="button" class="btn btn-warning btn-block" onclick="addToDisplay('/')">/</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('4')">4</button></div>
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('5')">5</button></div>
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('6')">6</button></div>
+            <div class="col"><button type="button" class="btn btn-warning btn-block" onclick="addToDisplay('*')">*</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('1')">1</button></div>
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('2')">2</button></div>
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('3')">3</button></div>
+            <div class="col"><button type="button" class="btn btn-warning btn-block" onclick="addToDisplay('-')">-</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('0')">0</button></div>
+            <div class="col"><button type="button" class="btn btn-primary btn-block" onclick="addToDisplay('.')">.</button></div>
+            <div class="col"><button type="button" class="btn btn-success btn-block" onclick="calculate()">=</button></div>
+            <div class="col"><button type="button" class="btn btn-warning btn-block" onclick="addToDisplay('+')">+</button></div>
+        </div>
+    </form>
+</div>
+
+<script>
+    function addToDisplay(value) {
+        document.calculator.display.value += value;
+    }
+
+    function clearDisplay() {
+        document.calculator.display.value = "";
+    }
+
+    function calculate() {
+        try {
+            document.calculator.display.value = eval(document.calculator.display.value);
+        } catch (error) {
+            document.calculator.display.value = "Error";
+        }
+    }
+</script>
+
+</body>
+</html>
